@@ -76,7 +76,7 @@ class Login extends PureComponent {
     <div className='auth-wrapper auth-v2'>
       <Row className='auth-inner m-0'>
         <Link className='brand-logo' to='/' onClick={e => e.preventDefault()}>        
-          <h2 className="brand-text text-primary ml-1" style={{ fontSize: "1rem" }}>Triple Negative Breast<br />Cancer Registry</h2>
+          <h2 className="brand-text text-primary ml-1">Bhawna Sirohi</h2>
         </Link>
         <Col className='d-none d-lg-flex align-items-center p-5' lg='8' sm='12'>
           <div className='w-100 d-lg-flex align-items-center justify-content-center px-5'>
