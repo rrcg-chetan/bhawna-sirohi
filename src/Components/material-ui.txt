@@ -1,0 +1,741 @@
+<div style={{ padding: 0, margin: 'auto' }}>
+                <CssBaseline />
+                <h1 className="text-center">Patients Demography</h1>
+                <Form
+                  onSubmit={onSubmit}
+                  initialValues={{}}
+                  validate={validate}
+                  render={({ handleSubmit, reset, submitting, pristine, values }) => (
+                    <form onSubmit={handleSubmit} noValidate>
+                      <Paper style={{ padding: 16 }}>
+                        <Grid container alignItems="flex-start" spacing={2}>
+                          <Grid item xs={6}>
+                            <Field
+                              fullWidth
+                              required
+                              name="patientName"
+                              component={TextField}
+                              type="text"
+                              label="Name of Patient"
+                            />
+                          </Grid>
+                          <Grid item xs={6}>
+                            <Field
+                              fullWidth
+                              required
+                              name="city"
+                              component={TextField}
+                              type="text"
+                              label="City"
+                            />
+                          </Grid>
+                          <Grid item xs={6}>
+                            <Field
+                              fullWidth
+                              required
+                              name="country"
+                              component={TextField}
+                              type="text"
+                              label="Country"
+                            />
+                          </Grid>
+                          <Grid item xs={6}>
+                            <Field
+                              fullWidth
+                              required
+                              name="hospitalID"
+                              component={TextField}
+                              type="text"
+                              label="Hospital ID"
+                            />
+                          </Grid>
+
+                          <Grid item xs={6}>
+                            <Field
+                              fullWidth
+                              required
+                              name="patientInitials"
+                              component={TextField}
+                              type="text"
+                              label="Patient's Initial"
+                            />
+                          </Grid>
+                          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                          <Grid item xs={6}>
+                            <Field
+                              fullWidth
+                              required
+                              name="dob"
+                              component={DatePickerWrapper}
+                              type="text"
+                              label="DOB"
+                            />
+                          </Grid>
+                          </MuiPickersUtilsProvider>
+
+                          <Grid item xs={6}>
+                            <Field
+                              fullWidth
+                              required
+                              name="ageofdiagnostics"
+                              component={TextField}
+                              type="text"
+                              label="Age of Diagnosis"
+                            />
+                          </Grid>
+                          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                          <Grid item xs={6}>
+                            <Field
+                              fullWidth
+                              required
+                              name="dodiag"
+                              component={DatePickerWrapper}
+                              type="text"
+                              label="Date of diagnosis of breast cancer"
+                            />
+                          </Grid>
+                          </MuiPickersUtilsProvider>
+                          
+                          
+                          <Grid item xs={12}>
+                            <FormControl component="fieldset">
+                              <FormLabel component="legend">Paraffin blocks available</FormLabel>
+                              <RadioGroup row aria-label="paraffin" name="paraffin">                          
+                                <FormControlLabel
+                                  label="Yes"
+                                  control={
+                                    <Field
+                                      name="paraffin"
+                                      id="paraffin"
+                                      component={Radio}
+                                      type="radio"
+                                      value="Yes" 
+                                      required                                      
+                                    />
+                                  }
+                                />
+                                <FormControlLabel
+                                  label="No"
+                                  control={
+                                    <Field
+                                      name="paraffin"
+                                      id="paraffin"
+                                      component={Radio}
+                                      type="radio"
+                                      value="No"   
+                                      required                       
+                                    />
+                                  }
+                                />
+                                <FormControlLabel
+                                  label="Not Available"
+                                  control={
+                                    <Field
+                                      name="paraffin"
+                                      id="paraffin"
+                                      component={Radio}
+                                      type="radio"
+                                      value="Not Available" 
+                                      required   
+                                    />
+                                  }
+                                />                           
+                              </RadioGroup>
+                            </FormControl>
+                          </Grid>
+
+                          <Grid item xs={6}>
+                            <FormControl component="fieldset">
+                              <FormLabel component="legend">Profession</FormLabel>
+                              <RadioGroup row>
+                                <FormControlLabel
+                                  label="Doctor"
+                                  control={
+                                    <Field
+                                      name="profession"
+                                      component={Radio}
+                                      type="radio"
+                                      value="Doctor"
+                                      onClick={ () => this.hideProComponent("hideProfession") }
+                                    />
+                                  }
+                                />
+                                <FormControlLabel
+                                  label="Nurse"
+                                  control={
+                                    <Field
+                                      name="profession"
+                                      component={Radio}
+                                      type="radio"
+                                      value="Nurse"
+                                      onClick={ () => this.hideProComponent("hideProfession") }
+                                    />
+                                  }
+                                />
+                                <FormControlLabel
+                                  label="Teacher"
+                                  control={
+                                    <Field
+                                      name="profession"
+                                      component={Radio}
+                                      type="radio"
+                                      value="Teacher"
+                                      onClick={ () => this.hideProComponent("hideProfession") }
+                                    />
+                                  }
+                                />
+                                <FormControlLabel
+                                  label="Home Maker"
+                                  control={
+                                    <Field
+                                      name="profession"
+                                      component={Radio}
+                                      type="radio"
+                                      value="Home Maker"
+                                      onClick={ () => this.hideProComponent("hideProfession") }
+                                    />
+                                  }
+                                />
+                                <FormControlLabel
+                                  label="Other"
+                                  control={
+                                    <Field
+                                      name="profession"
+                                      component={Radio}
+                                      type="radio"
+                                      value="Other"
+                                      onClick={ () => this.showProComponent("showProfession") }
+                                    />
+                                  }
+                                />                          
+                              </RadioGroup>
+                            </FormControl>
+                          </Grid>
+                          {showProfession && (
+                            <Grid item xs={6}>
+                            <Field
+                              fullWidth                        
+                              name="otherprofession"
+                              component={TextField}
+                              type="text"
+                              label="If Other Please mention Profession"
+                            />
+                          </Grid>
+                          )}    
+
+
+                          <Grid item xs={12}>
+                            <FormControl component="fieldset">
+                              <FormLabel component="legend">Ethnicity</FormLabel>
+                              <RadioGroup row>
+                                <FormControlLabel
+                                  label="British Indian"
+                                  control={
+                                    <Field
+                                      name="ethnicity"
+                                      component={Radio}
+                                      type="radio"
+                                      value="British Indian"
+                                      onClick={ () => this.hideEthComponent("hideEthnicity") }
+                                    />
+                                  }
+                                />
+                                <FormControlLabel
+                                  label="British Bangladesh"
+                                  control={
+                                    <Field
+                                      name="ethnicity"
+                                      component={Radio}
+                                      type="radio"
+                                      value="British Bangladesh"
+                                      onClick={ () => this.hideEthComponent("hideEthnicity") }
+                                    />
+                                  }
+                                />
+                                <FormControlLabel
+                                  label="British Pakistan"
+                                  control={
+                                    <Field
+                                      name="ethnicity"
+                                      component={Radio}
+                                      type="radio"
+                                      value="British Pakistan"
+                                      onClick={ () => this.hideEthComponent("hideEthnicity") }
+                                    />
+                                  }
+                                />
+                                <FormControlLabel
+                                  label="British-Middle-East"
+                                  control={
+                                    <Field
+                                      name="ethnicity"
+                                      component={Radio}
+                                      type="radio"
+                                      value="British-Middle-East"
+                                      onClick={ () => this.hideEthComponent("hideEthnicity") }
+                                    />
+                                  }
+                                />
+                                <FormControlLabel
+                                  label="Indian"
+                                  control={
+                                    <Field
+                                      name="ethnicity"
+                                      component={Radio}
+                                      type="radio"
+                                      value="Indian"
+                                      onClick={ () => this.hideEthComponent("hideEthnicity") }
+                                    />
+                                  }
+                                />
+                                <FormControlLabel
+                                  label="Afro-Caribbean"
+                                  control={
+                                    <Field
+                                      name="ethnicity"
+                                      component={Radio}
+                                      type="radio"
+                                      value="Afro-Caribbean"
+                                      onClick={ () => this.hideEthComponent("hideEthnicity") }
+                                    />
+                                  }
+                                />
+                                <FormControlLabel
+                                  label="Caucasian"
+                                  control={
+                                    <Field
+                                      name="ethnicity"
+                                      component={Radio}
+                                      type="radio"
+                                      value="Caucasian"
+                                      onClick={ () => this.hideEthComponent("hideEthnicity") }
+                                    />
+                                  }
+                                />
+                                <FormControlLabel
+                                  label="Other"
+                                  control={
+                                    <Field
+                                      name="ethnicity"
+                                      component={Radio}
+                                      type="radio"
+                                      value="Other"
+                                      onClick={ () => this.showEthComponent("showEthnicity") }
+                                    />
+                                  }
+                                />
+                                {showEthnicity && (
+                            <Grid item xs={12}>
+                            <Field
+                              fullWidth                        
+                              name="otherethnicity"
+                              component={TextField}
+                              type="text"
+                              label="If Other Please mention Ethnicity"
+                            />
+                          </Grid>
+                          )}    
+                              </RadioGroup>
+                            </FormControl>
+                          </Grid>
+
+                          <Grid item xs={4}>
+                            <Field
+                              fullWidth
+                              id="height"
+                              name="height"
+                              component={TextField}
+                              multiline
+                              label="Height in CMS"
+                              value={height}
+                              onChange={calculateBMI} onBlur={changeHeight} step="any"
+                            />
+                          </Grid>
+                          <Grid item xs={4}>
+                            <Field
+                              fullWidth
+                              id="weight"
+                              name="weight"
+                              component={TextField}
+                              multiline
+                              value={weight}
+                              label="Weight in Kgs"
+                              onChange={calculateBMI} onBlur={changeWeight} step="any"
+                            />
+                          </Grid>
+                          <Grid item xs={4}>
+                            <Field
+                              fullWidth
+                              id="bmi"
+                              name="bmi"
+                              component={TextField}
+                              multiline
+                              label="BMI Value"
+                              defaultValue={Math.round(bmi).toFixed(2)}
+                              onBlur={calculateBMI}
+                              onFocus={calculateBMI}     
+                              value={calculateBMI} 
+                              /*inputProps={() => this.state.bmivalue}*/
+                            />
+                          </Grid>
+                          <Grid item xs={4}>
+                            <FormControl component="fieldset">
+                              <FormLabel component="legend">Family h/o cancer</FormLabel>
+                              <RadioGroup row>                          
+                                <FormControlLabel
+                                  label="Yes"
+                                  control={
+                                    <Field
+                                      name="hocancer"
+                                      component={Radio}
+                                      type="radio"
+                                      value="Yes"        
+                                      onClick={ () => this.showCancerComponent("showCancer") }                        
+                                    />
+                                  }
+                                />
+                                <FormControlLabel
+                                  label="No"
+                                  control={
+                                    <Field
+                                      name="hocancer"
+                                      component={Radio}
+                                      type="radio"
+                                      value="No"    
+                                      onClick={ () => this.hideCancerComponent("hideCancer") }
+                                    />
+                                  }
+                                />
+                                <FormControlLabel
+                                  label="Not Available"
+                                  control={
+                                    <Field
+                                      name="hocancer"
+                                      component={Radio}
+                                      type="radio"
+                                      value="Not Available"   
+                                      onClick={ () => this.hideCancerComponent("hideCancer") }                             
+                                    />
+                                  }
+                                />                           
+                              </RadioGroup>
+                            </FormControl>
+                          </Grid>
+                          {showCancer && (
+                            <Grid item xs={5}>
+                              <FormControl component="fieldset">
+                              <FormLabel component="legend">Which relative</FormLabel>
+                              <RadioGroup row>
+                              <FormControlLabel
+                                  label="Mother"
+                                  control={
+                                    <Field
+                                      name="hascancer"
+                                      component={Radio}
+                                      type="radio"
+                                      value="Mother"
+                                      onClick={ () => this.hideOtherCancerComponent("hideOtherCancer") }                                   
+                                    />
+                                  }
+                                />
+                                <FormControlLabel
+                                  label="Father"
+                                  control={
+                                    <Field
+                                      name="hascancer"
+                                      component={Radio}
+                                      type="radio"
+                                      value="Father"
+                                      onClick={ () => this.hideOtherCancerComponent("hideOtherCancer") }                                   
+                                    />
+                                  }
+                                />
+                                <FormControlLabel
+                                  label="Sister"
+                                  control={
+                                    <Field
+                                      name="hascancer"
+                                      component={Radio}
+                                      type="radio"
+                                      value="Sister"
+                                      onClick={ () => this.hideOtherCancerComponent("hideOtherCancer") }                                  
+                                    />
+                                  }
+                                />
+                                <FormControlLabel
+                                  label="Brother"
+                                  control={
+                                    <Field
+                                      name="hascancer"
+                                      component={Radio}
+                                      type="radio"
+                                      value="Brother"                                   
+                                      onClick={ () => this.hideOtherCancerComponent("hideOtherCancer") }
+                                    />
+                                  }
+                                />
+                                <FormControlLabel
+                                  label="Other"
+                                  control={
+                                    <Field
+                                      name="hascancer"
+                                      component={Radio}
+                                      type="radio"
+                                      value="Other"   
+                                      onClick={ () => this.showOtherCancerComponent("showOtherCancer") }                                
+                                    />
+                                  }
+                                />                          
+                              </RadioGroup>                        
+                              </FormControl>
+                            </Grid>
+                          )} 
+                          {showOtherCancer && (
+                            <Grid item xs={3}>
+                            <Field
+                              fullWidth                        
+                              name="othercancer"
+                              component={TextField}
+                              type="text"
+                              label="If Other Please Mention"
+                            />
+                          </Grid>
+                          )}
+                          <Grid xs={12}></Grid>
+                          <Grid item xs={6}>
+                            <Field
+                              fullWidth
+                              required
+                              name="cancerType"
+                              component={TextField}
+                              type="text"
+                              label="Type of Cancer"
+                            />
+                          </Grid>
+                          <Grid item xs={6}>
+                            <Field
+                              fullWidth
+                              required
+                              name="ageatdiagnosis"
+                              component={TextField}
+                              type="text"
+                              label="Age at diagnosis of relative"
+                            />
+                          </Grid>
+                          
+                          <Grid item xs={4}>
+                            <FormControl component="fieldset">
+                              <FormLabel component="legend">Presenting Symptom</FormLabel>
+                              <RadioGroup row>                          
+                                <FormControlLabel
+                                  label="Screen Detected"
+                                  control={
+                                    <Field
+                                      name="presentingsymptom"
+                                      component={Radio}
+                                      type="radio"
+                                      value="Screen Detected"                                
+                                    />
+                                  }
+                                />
+                                <FormControlLabel
+                                  label="Symptom Detected
+                                  "
+                                  control={
+                                    <Field
+                                      name="presentingsymptom"
+                                      component={Radio}
+                                      type="radio"
+                                      value="Symptom Detected
+                                      "                                
+                                    />
+                                  }
+                                />                                                  
+                              </RadioGroup>
+                            </FormControl>
+                          </Grid>
+
+                          
+                          <Grid item xs={4}>                      
+                              <FormLabel component="legend">Monthly Family Income</FormLabel>                    
+                            <Field
+                              fullWidth
+                              name="incomecurrency"
+                              component={Select}
+                              label="Select a Currency"
+                              formControlProps={{ fullWidth: true }}
+                            >
+                              <MenuItem value="">Select Currency</MenuItem>
+                              <MenuItem value="INR">INR</MenuItem>
+                              <MenuItem value="USD">USD</MenuItem>
+                            </Field>                      
+                          </Grid>
+                          <Grid item xs={4}>                      
+                              <FormLabel component="legend">Enter Amount</FormLabel>                    
+                              <Field
+                              fullWidth
+                              required
+                              name="incomecurrencyvalue"
+                              component={TextField}
+                              type="text"
+                              label="Enter Amount"
+                            />                     
+                          </Grid>
+                          
+                          
+                          <Grid item xs={12}>
+                            <FormControl component="fieldset">
+                              <FormLabel component="legend">Co-morbidities</FormLabel>
+                              <RadioGroup row>
+                                <FormControlLabel
+                                  label="Hypertension"
+                                  control={
+                                    <Field
+                                      name="morbidities"
+                                      component={Radio}
+                                      type="radio"
+                                      value="Hypertension"
+                                      onClick={ () => this.hideMorbComponent("hideMorbidities") }
+                                    />
+                                  }
+                                />
+                                <FormControlLabel
+                                  label="DM"
+                                  control={
+                                    <Field
+                                      name="morbidities"
+                                      component={Radio}
+                                      type="radio"
+                                      value="DM"
+                                      onClick={ () => this.hideMorbComponent("hideMorbidities") }
+                                    />
+                                  }
+                                />
+                                <FormControlLabel
+                                  label="IHD and CVA"
+                                  control={
+                                    <Field
+                                      name="morbidities"
+                                      component={Radio}
+                                      type="radio"
+                                      value="IHD and CVA"
+                                      onClick={ () => this.hideMorbComponent("hideMorbidities") }
+                                    />
+                                  }
+                                />
+                                <FormControlLabel
+                                  label="Hypothyroid"
+                                  control={
+                                    <Field
+                                      name="morbidities"
+                                      component={Radio}
+                                      type="radio"
+                                      value="Hypothyroid"
+                                      onClick={ () => this.hideMorbComponent("hideMorbidities") }
+                                    />
+                                  }
+                                />
+                                <FormControlLabel
+                                  label="Viral Illness – HIV"
+                                  control={
+                                    <Field
+                                      name="morbidities"
+                                      component={Radio}
+                                      type="radio"
+                                      value="Viral Illness – HIV"
+                                      onClick={ () => this.hideMorbComponent("hideMorbidities") }
+                                    />
+                                  }
+                                />
+                                <FormControlLabel
+                                  label="Hepatitis B"
+                                  control={
+                                    <Field
+                                      name="morbidities"
+                                      component={Radio}
+                                      type="radio"
+                                      value="Hepatitis B"
+                                      onClick={ () => this.hideMorbComponent("hideMorbidities") }
+                                    />
+                                  }
+                                />
+                                <FormControlLabel
+                                  label="Hepatitis C"
+                                  control={
+                                    <Field
+                                      name="morbidities"
+                                      component={Radio}
+                                      type="radio"
+                                      value="Hepatitis C"
+                                      onClick={ () => this.hideMorbComponent("hideMorbidities") }
+                                    />
+                                  }
+                                />
+                                <FormControlLabel
+                                  label="TB"
+                                  control={
+                                    <Field
+                                      name="morbidities"
+                                      component={Radio}
+                                      type="radio"
+                                      value="TB"
+                                      onClick={ () => this.hideMorbComponent("hideMorbidities") }
+                                    />
+                                  }
+                                />
+                                <FormControlLabel
+                                  label="Other"
+                                  control={
+                                    <Field
+                                      name="morbidities"
+                                      component={Radio}
+                                      type="radio"
+                                      value="Other"
+                                      onClick={ () => this.showMorbComponent("showMorbidities") }
+                                    />
+                                  }
+                                />
+                                {showMorbidities && (
+                            <Grid item xs={12}>
+                            <Field
+                              fullWidth                        
+                              name="othermorbidities"
+                              component={TextField}
+                              type="text"
+                              label="If Other Please mention"
+                            />
+                          </Grid>
+                          )}    
+                              </RadioGroup>
+                            </FormControl>
+                          </Grid>
+
+
+                          <Grid item style={{ marginTop: 16 }}>
+                            <Button
+                              type="button"
+                              variant="contained"
+                              onClick={reset}
+                              disabled={submitting || pristine}
+                            >
+                              Reset
+                            </Button>
+                          </Grid>
+                          <Grid item style={{ marginTop: 16 }}>
+                            <Button
+                              variant="contained"
+                              color="primary"
+                              type="submit"
+                              disabled={submitting}
+                            >
+                              Submit
+                            </Button>
+                          </Grid>
+                        </Grid>
+                      </Paper>
+                      <pre>{JSON.stringify(values, 0, 2)}</pre>
+                    </form>
+                  )}
+                />
+              </div>
+            </div>
