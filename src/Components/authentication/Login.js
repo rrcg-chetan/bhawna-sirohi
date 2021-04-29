@@ -30,7 +30,7 @@ class Login extends PureComponent {
     }
   }
   
-  login = e => {
+  login = (event, values) => {
     this.setState({ loading: true });
     const { history } = this.props;
     axios.post("http://localhost:4000/login", { withCredentials: true, email: this.state.email, password: this.state.password }, {            
@@ -86,7 +86,7 @@ class Login extends PureComponent {
         <Col className='d-flex align-items-center auth-bg px-2 p-lg-5' lg='4' sm='12'>
           <Col className='px-xl-2 mx-auto' sm='8' md='6' lg='12'>            
             <CardText className='mb-2'>Please sign-in to your account</CardText>
-            <AvForm className='auth-login-form mt-2' onSubmit= {() => this.login()}>
+            <AvForm className='auth-login-form mt-2' onValidSubmit= {this.login}>
             <div role="alert" aria-live="polite" aria-atomic="true" className="alert alert-primary">
               <div className={classnames({'alert-body font-small-2': this.state.loginStatus})}>
                 {this.state.loginStatus}
@@ -131,7 +131,7 @@ class Login extends PureComponent {
               <FormGroup>
                 <CustomInput type='checkbox' className='custom-control-Primary' id='remember-me' label='Remember Me' />
               </FormGroup>
-              <Button color='primary' block disabled={loading} onClick={this.login}>
+              <Button color='primary' block disabled={loading}>
                 {loading && (<svg width="30px" height="30px" viewBox="0 0 40 40" enable-background="new 0 0 40 40">
                   <path opacity="0.2" fill="#fff" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946
                     s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634
